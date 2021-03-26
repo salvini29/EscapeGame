@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/sendFriend', [App\Http\Controllers\HomeController::class, 'sendFriend'])->name('sendFriend');
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('index');
 

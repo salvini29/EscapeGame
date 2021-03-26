@@ -19,6 +19,9 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 
+use Auth;
+use App\Models\Code;
+
 class PaymentController extends Controller
 {
 
@@ -93,6 +96,7 @@ class PaymentController extends Controller
 
         if ($result->getState() === 'approved') {
             $status = 'Gracias! El pago a través de PayPal se ha ralizado correctamente. Y podes verlo en tus codigos.';
+            $this->insertCode(); //inserto nuevo codigo en db
             return redirect('/home')->with('status',$status);
         }
 
@@ -128,6 +132,43 @@ class PaymentController extends Controller
     public function afterPaymentStripe()
     {
     	$status = 'Gracias! El pago a través de Stripe se ha ralizado correctamente. Y podes verlo en tus codigos.';
+    	$this->insertCode(); //inserto nuevo codigo en db
         return redirect('/home')->with('status',$status);
+    }
+
+    // INSERTAR CODIGOS EN DB
+
+    public function insertCode()
+    {
+    	$codes = Code::where('user_id', Auth::user()->id)->get();
+    	//return count($codes);
+
+    	$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 8; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+
+    	if (count($codes) == 0)
+    	{
+    		Code::create([ 'user_id' => Auth::user()->id , 'room_name' => 'dynamics' ,'code_1' => $randomString , 'code_2' => '' , 'code_3' => '' , 'code_4' => '', 'code_5' => '', 'code_6' => '' ]);
+    	}
+    	else
+    	{
+    		if ( ($codes[0])->code_2 == '') {
+			    Code::where('user_id', Auth::user()->id)->update([ 'code_2' => $randomString ]);
+			} elseif ( ($codes[0])->code_3 == '') {
+				Code::where('user_id', Auth::user()->id)->update([ 'code_3' => $randomString ]);
+			} elseif ( ($codes[0])->code_4 == '') {
+			    Code::where('user_id', Auth::user()->id)->update([ 'code_4' => $randomString ]);
+			} elseif ( ($codes[0])->code_5 == '') {
+			    Code::where('user_id', Auth::user()->id)->update([ 'code_5' => $randomString ]);
+			} elseif ( ($codes[0])->code_6 == '') {
+			    Code::where('user_id', Auth::user()->id)->update([ 'code_6' => $randomString ]);
+			}
+    	}
+    	// si hay coso uso return ($codes[0])->user_id;
     }
 }

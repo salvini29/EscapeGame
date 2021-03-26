@@ -12,6 +12,7 @@
                 <a href="{{ route('paypalpay') }}"><img src="assets/images/PayPalbutton2.png" alt=""></a>
                 
                 @php
+                    //$ipreal = \Request::ip(); //Esto si lo saco a produccion y quisiese la ip real del cliente
                     $ip = '200.86.0.10'; //IP DE CHILE
                     //$ip = '190.246.252.118'; //IP ARGENTINA
                     $data = \Location::get($ip);
