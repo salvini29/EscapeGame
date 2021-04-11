@@ -41,8 +41,17 @@ Route::get('/stripe',[App\Http\Controllers\PaymentController::class, 'checkoutSt
 Route::post('/stripe',[App\Http\Controllers\PaymentController::class, 'afterPaymentStripe'])->name('checkout.credit-card');
 
 
+//Room
+
+//Escape Room
+Route::get('/room/{name}/{code}',[App\Http\Controllers\RoomController::class, 'dynamicsroom']);
+Route::post('/room/{name}/{code}',[App\Http\Controllers\RoomController::class, 'dynamicsroomsend'])->name('dynamicsroomsend');
+
+/*Route::get('/sendCode',[App\Http\Controllers\RoomController::class, 'roomcode']);
+Route::post('/sendCode',[App\Http\Controllers\RoomController::class, 'roomcodesend'])->name('roomcodesend');*/
 
 
+//------------
 
 Route::get('/test', [App\Http\Controllers\PageController::class, 'testeo'])->name('testeo')->middleware('auth');
 
