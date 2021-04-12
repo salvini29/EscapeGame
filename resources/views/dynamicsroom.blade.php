@@ -42,7 +42,7 @@
             $('#change').text('Come onnnnnnnnnnnnnnnnnnnn3!');
       }
       else if ( (data.message)['2'] == window.location.href && (data.message)['1'] == 'CODIGO4' ) {
-          window.location.replace("{{route('faq')}}");
+          window.location.replace("{{ route('home', ['status' => 'Han completado toda la sala!!']) }}");
       }
 
     });
@@ -53,7 +53,7 @@
   <body>
 
     <div class="d-flex justify-content-center">
-      <h1>Hello, world!</h1>
+      <h1>Dynamics</h1>
     </div>
     <br>
     <div class="d-flex justify-content-center">
@@ -83,13 +83,13 @@
     <br>
 
     <div class="d-flex justify-content-center">
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200"></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img" /></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img2" /></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img3" /></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img4" /></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img5" /></div>
-      <div class="p-3"><img src="{{ asset('assests/images/member-item-06.jpg') }}" width="200" height="200" style="display: none;" id="img6" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200"></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img2" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img3" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img4" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img5" /></div>
+      <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img6" /></div>
     </div>
 
     <br>

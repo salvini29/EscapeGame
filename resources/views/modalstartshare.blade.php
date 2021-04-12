@@ -21,8 +21,9 @@
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
                 <hr>
-                <form action="{{route('sendFriend')}}"  method="post">
+                <form action="{{route('startRoom')}}" method="post">
                     @csrf
+                    <input type="hidden" class="form-control" name="sendCode" id="sendCode" value="">
                     <button type="submit" class="btn btn-success">Empezar sala</button>
                 </form>
             </div>

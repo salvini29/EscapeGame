@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "paypal/rest-api-sdk-php": "^1.14",
-        "pusher/pusher-php-server": "5.0",
+        "pusher/pusher-php-server": "^5.0",
         "stevebauman/location": "^6.1",
         "stripe/stripe-php": "^7.75"
     },

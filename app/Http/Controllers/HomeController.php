@@ -81,6 +81,12 @@ class HomeController extends Controller
 
     }
 
+    public function startRoom(Request $request)
+    {
+        //return $request->sendCode;
+        return redirect()->route('dynamicsroomsend', ['name' => 'dynamics', 'code' => $request->sendCode]);
+    }
+
 
     public function asd()
     {

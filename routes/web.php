@@ -43,8 +43,10 @@ Route::post('/stripe',[App\Http\Controllers\PaymentController::class, 'afterPaym
 
 //Room
 
+//RoomSender
+Route::post('/startRoom', [App\Http\Controllers\HomeController::class, 'startRoom'])->name('startRoom');
 //Escape Room
-Route::get('/room/{name}/{code}',[App\Http\Controllers\RoomController::class, 'dynamicsroom']);
+Route::get('/room/{name}/{code}',[App\Http\Controllers\RoomController::class, 'dynamicsroom'])->name('dynamicsroom');;
 Route::post('/room/{name}/{code}',[App\Http\Controllers\RoomController::class, 'dynamicsroomsend'])->name('dynamicsroomsend');
 
 /*Route::get('/sendCode',[App\Http\Controllers\RoomController::class, 'roomcode']);

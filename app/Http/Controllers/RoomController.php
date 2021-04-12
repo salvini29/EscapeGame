@@ -15,11 +15,10 @@ class RoomController extends Controller
     public function dynamicsroomsend(Request $request,$name,$code)
     {
 
-    	$xd = array('1'=>"hola");
-        /*$xd = array(
+        $xd = array(
             '1' => request('text'), 
             '2' => Request::url()
-        );*/
+        );
         event(new CodeEvent($xd));
         
     }
