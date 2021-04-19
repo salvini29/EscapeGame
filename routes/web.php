@@ -39,6 +39,10 @@ Route::get('/results', [App\Http\Controllers\PaymentController::class, 'results'
 //Stripe
 Route::get('/stripe',[App\Http\Controllers\PaymentController::class, 'checkoutStripe'])->name('stripepay');
 Route::post('/stripe',[App\Http\Controllers\PaymentController::class, 'afterPaymentStripe'])->name('checkout.credit-card');
+//Mercadopago
+Route::get('/mercadopago', [App\Http\Controllers\PaymentController::class, 'mercadopagoPay'])->name('mercadopago');
+Route::get('/mercadopago/approved', [App\Http\Controllers\PaymentController::class, 'mercadopagoApproved'])->name('mercadopagoApproved');
+Route::get('/mercadopago/denied', [App\Http\Controllers\PaymentController::class, 'mercadopagoDenied'])->name('mercadopagoDenied');
 
 
 //Room
@@ -56,5 +60,4 @@ Route::post('/sendCode',[App\Http\Controllers\RoomController::class, 'roomcodese
 //------------
 
 Route::get('/test', [App\Http\Controllers\PageController::class, 'testeo'])->name('testeo')->middleware('auth');
-
 Route::get('/asdasd', [App\Http\Controllers\HomeController::class, 'asd'])->name('homeee')->middleware('auth');

@@ -101,7 +101,7 @@ class PaymentController extends Controller
         }
 
         	$status = 'Lo sentimos! El pago a través de PayPal no se pudo realizar.';
-        	return redirect('/home')->with('status',$status);
+        	return redirect('/home')->with('failed',$status);
 	}
 	
 
@@ -171,4 +171,26 @@ class PaymentController extends Controller
     	}
     	// si hay coso uso return ($codes[0])->user_id;
     }
+
+    /* ------------------------------STRIPE---------------------------------------*/
+
+    public function mercadopagoPay()
+ 	{
+ 		return view('mercadopago');
+	}
+
+	public function mercadopagoApproved()
+ 	{
+ 		$this->insertCode(); //inserto nuevo codigo en db
+        //return redirect('/home')->with('status',$status);
+        $status = 'Gracias! El pago a través de Mercadopago se ha ralizado correctamente. Y podes verlo en tus codigos.';
+        return redirect()->route('home')->with('status',$status);
+	}
+
+	public function mercadopagoDenied()
+ 	{
+ 		$status = 'Lo sentimos! El pago a través de Mercadopago no se pudo realizar.';
+        return redirect()->route('home')->with('failed',$status);
+	}
+
 }
