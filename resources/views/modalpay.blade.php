@@ -12,9 +12,7 @@
                 <a href="{{ route('paypalpay') }}"><img src="{{ asset('roomimg/PayPalbutton2.png') }}" alt=""></a>
                 
                 @php
-                    //$ipreal = \Request::ip(); //Esto si lo saco a produccion y quisiese la ip real del cliente
-                    //$ip = '200.86.0.10'; //IP DE CHILE
-                    $ip = '190.246.252.118'; //IP ARGENTINA
+                    $ip = 'xx.xx.xx.xx';
                     $data = \Location::get($ip);
                 @endphp
                 @if ( $data->countryName == "Argentina" )
@@ -25,9 +23,6 @@
 
             </div>
             <br>
-            {{-- <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Enviar">
-            </div> --}}
         </div>
     </div>
 </div>

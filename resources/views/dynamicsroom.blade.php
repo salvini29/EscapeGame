@@ -16,7 +16,6 @@
       <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   <script>
 
-    // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('026e0136f6ff61d42621', {
@@ -25,11 +24,6 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      //alert(JSON.stringify(data));
-      //console.log(window.location.href);
-      //let datam = data.message;
-      //(data.message)['PONER LA PROPIEDAD DEL OBJETO']
-      //console.log( (data.message)['2'] );
       if ( (data.message)['2'] == window.location.href && (data.message)['1'] == 'CODIGO1') {
             $("#img").show();
             $("#img2").show();
@@ -71,16 +65,7 @@
         <div class="col-sm">
           
               <div class="d-flex justify-content-center">
-              <!-- Optional JavaScript; choose one of the two! -->
-
-              <!-- Option 1: Bootstrap Bundle with Popper -->
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-              <!-- Option 2: Separate Popper and Bootstrap JS -->
-              <!--
-              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
-              -->
               <form>
                 @csrf
                 <label for="lname">Codigo:</label><br>
@@ -103,8 +88,8 @@
             <br>
 
             <div class="d-flex justify-content-center">
-              <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200"></div>
-              <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img" /></div>
+              <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" onclick="scaleImg()" id="primera"></div>
+              <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" onclick="scaleImg2()" style="display: none;" id="img" /></div>
               <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img2" /></div>
               <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img3" /></div>
               <div class="p-3"><img src="{{ asset('roomimg/test.jpg') }}" width="200" height="200" style="display: none;" id="img4" /></div>
@@ -170,5 +155,41 @@
       e.preventDefault();
       });
     </script>
+
+    <script>
+      var timesClicked = 0;
+      var timesClicked2 = 0;
+
+      function scaleImg() {
+          timesClicked++;
+          img = document.getElementById("img");
+          if( timesClicked%2 == 0 )
+          {
+            img.style.transform = "scale(3.5)";
+            img.style.transition = "transform 0.25s ease";
+          }
+          else
+          {
+            img.style.transform = "scale(1)";
+            img.style.transition = "transform 0.25s ease";
+          }
+      }
+
+      function scaleImg2() {
+          timesClicked2++;
+          img = document.getElementById("primera");
+          if( timesClicked2%2 == 0 )
+          {
+            img.style.transform = "scale(3.5)";
+            img.style.transition = "transform 0.25s ease";
+          }
+          else
+          {
+            img.style.transform = "scale(1)";
+            img.style.transition = "transform 0.25s ease";
+          }
+      }
+    </script>
+
   </body>
 </html>
